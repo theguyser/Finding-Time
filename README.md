@@ -1,15 +1,15 @@
 # Finding Time
-# Description:
+## Description:
 
 A short game about finding the right "time" to leave the house to catch the "Blue Hour."
 Made for RMIT Game Jam 2024
 Game Jam Theme: Blue Hour
 
-# Controls:
+## Controls:
 - WASD - Move
 - Space - Jump
 - Left Click - Flavor text for certain objects
-# Assets Used:
+## Assets Used:
 - First Person Drifter – Character Controller https://github.com/jackaperkins/first-person-drifter/tree/1.0.0 
 - Indoor Footsteps.wav by WakuWakuWakuWaku -- https://freesound.org/s/366111/ -- License: Creative Commons 0 
 - Studio Billion – House Interior https://assetstore.unity.com/packages/3d/props/interior/free-house-interior-2234... 
