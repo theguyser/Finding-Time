@@ -2,7 +2,9 @@
 ## Description:
 
 A short game about finding the right "time" to leave the house to catch the "Blue Hour."
+
 Made for RMIT Game Jam 2024
+
 Game Jam Theme: Blue Hour
 
 ## Controls:
