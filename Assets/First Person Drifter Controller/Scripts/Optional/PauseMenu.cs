@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 	private int fontSize;
 	
 	private float fovSlider = .5f;
-	private float sensitivitySlider = .5f;
+	private float sensitivitySlider = 0f;
 	
 	private bool mouseSettings = false;
 	private bool quitDialog = false;

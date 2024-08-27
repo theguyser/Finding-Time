@@ -9,6 +9,7 @@ public class Clickable : MonoBehaviour
     public string[] dialogue;
     public TextMeshProUGUI dialogueText;
     public bool isCamera = false;
+    public bool canLeave = false;
     public FirstPersonDrifter player;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,10 @@ public class Clickable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (canLeave)
+        {
+            dialogue[0] = "I can leave and catch the blue hour now";
+        }
     }
     IEnumerator TypeSentence(string sentence)
     {

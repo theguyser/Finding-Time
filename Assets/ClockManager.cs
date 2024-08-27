@@ -30,7 +30,7 @@ public class ClockManager : MonoBehaviour
     [SerializeField] private AudioClip[] interactSounds = default;
     public GameObject answerClockHand;
 
-    [SerializeField] private int currentNote = 3;
+    [SerializeField] private int currentNote = 13;
 
     public GameObject doorHinge;
     public bool puzzleSolved = false;
@@ -43,6 +43,7 @@ public class ClockManager : MonoBehaviour
 
     private int recall = 0;
     public GameObject Camera;
+    public Clickable door;
     //private TextMeshProUGUI clockUI;
 
     // Start is called before the first frame update
@@ -242,7 +243,7 @@ public class ClockManager : MonoBehaviour
         if(answerClockNumber == correctNumber)
         {
             audioSource.PlayOneShot(doorClick);
-            Camera.SetActive(true);
+            
         }
     }
     public void SubtractTime()
@@ -255,7 +256,7 @@ public class ClockManager : MonoBehaviour
         if (answerClockNumber == correctNumber)
         {
             audioSource.PlayOneShot(doorClick);
-            Camera.SetActive(true);
+            
         }
     }
     public void PlayInteractAudio(string clock)
@@ -264,9 +265,9 @@ public class ClockManager : MonoBehaviour
         {
             currentNote++;
             {
-                if (currentNote > 7)
+                if (currentNote > 28)
                 {
-                    currentNote = 7;
+                    currentNote = 28;
                 }
             }
         }
@@ -304,6 +305,22 @@ public class ClockManager : MonoBehaviour
             }
         }
 
+        if(answerClockNumber == correctNumber)
+        {
+            if (Camera.activeSelf == false)
+            {
+                Camera.SetActive(true);
+            }
+            door.canLeave = true;
+        }
+        else
+        {
+            if(Camera.activeSelf == true)
+            {
+                Camera.SetActive(false);
+            }
+            door.canLeave = false;
+        }
         //clockUI.text = "Answer Clock Time: " + answerClockNumber;
 
     }
@@ -314,18 +331,17 @@ public class ClockManager : MonoBehaviour
             StopAllCoroutines();
             dialogueText.text = "";
             player.lastClickTime = -5f;
-            StartCoroutine(TypeSentence("Stepping here seems to have changed something"));
+            StartCoroutine(TypeSentence("I should check how the clock in my room has changed after hearing this sound"));
         }
         else if (timesSteppedOn == 3)
         {
             StopAllCoroutines();
             dialogueText.text = "";
             player.lastClickTime = -5f;
-            StartCoroutine(TypeSentence("I should check how the clock in my room has changed after hearing this sound"));
+            StartCoroutine(TypeSentence("Stepping here seems to either raise or lower the time on my clock"));
         }
         else if (timesSteppedOn == 7)
         {
-            
             audioSource.PlayOneShot(wrongSound);
             StopAllCoroutines();
             dialogueText.text = "";
@@ -337,23 +353,22 @@ public class ClockManager : MonoBehaviour
             StopAllCoroutines();
             dialogueText.text = "";
             player.lastClickTime = -5f;
-            StartCoroutine(TypeSentence("Stepping here seems to either raise or lower the time on my clock"));
+            StartCoroutine(TypeSentence("When the pitch increases, the time on my clock increases by 1. When the pitch decreases, it decreases by 1"));
         }
         else if (timesSteppedOn == 12)
         {
             StopAllCoroutines();
             dialogueText.text = "";
             player.lastClickTime = -5f;
-            StartCoroutine(TypeSentence("The hand the weird clocks share is the time my clock needs to be"));
+            StartCoroutine(TypeSentence("The hour hand the living room clock and toilet clock have in common is the time my clock needs to be"));
         }
         else if (timesSteppedOn == 14)
         {
-            
             audioSource.PlayOneShot(wrongSound);
             StopAllCoroutines();
             dialogueText.text = "";
             player.lastClickTime = -5f;
-            StartCoroutine(TypeSentence("I need to find the right time for my clock in less than 7 sounds"));
+            StartCoroutine(TypeSentence("I need to find the right time for my clock in less than 7 sounds or else it will reset the clocks"));
             timesSteppedOn = 0;
         }
     }
